@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script>
+
+// The size of the table.
+var iMaxNum = 15;
+
+// Set the length of the array to iMaxNum. The first array index is zero, not 1.
+var disociadaTable = new Array(iMaxNum);
+
+// Vector de entrada
+var inputVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+function init()
+{
+    document.getElementById('01img').border = "0";
+    document.getElementById('02img').border = "0";
+    document.getElementById('03img').border = "0";
+    document.getElementById('04img').border = "0";
+    document.getElementById('05img').border = "0";
+    document.getElementById('06img').border = "0";
+    document.getElementById('07img').border = "0";
+    document.getElementById('08img').border = "0";
+    document.getElementById('09img').border = "0";
+    document.getElementById('10img').border = "0";
+    document.getElementById('11img').border = "0";
+    document.getElementById('12img').border = "0";
+    document.getElementById('13img').border = "0";
+    document.getElementById('14img').border = "0";
+    document.getElementById('15img').border = "0";
+
+    document.getElementById('01t').style.visibility="hidden";
+    document.getElementById('02t').style.visibility="hidden";
+    document.getElementById('03t').style.visibility="hidden";
+    document.getElementById('04t').style.visibility="hidden";
+    document.getElementById('05t').style.visibility="hidden";
+    document.getElementById('06t').style.visibility="hidden";
+    document.getElementById('07t').style.visibility="hidden";
+    document.getElementById('08t').style.visibility="hidden";
+    document.getElementById('09t').style.visibility="hidden";
+    document.getElementById('10t').style.visibility="hidden";
+    document.getElementById('11t').style.visibility="hidden";
+    document.getElementById('12t').style.visibility="hidden";
+    document.getElementById('13t').style.visibility="hidden";
+    document.getElementById('14t').style.visibility="hidden";
+    document.getElementById('15t').style.visibility="hidden";
+
+    document.getElementById('01m').style.visibility="hidden";
+    document.getElementById('02m').style.visibility="hidden";
+    document.getElementById('03m').style.visibility="hidden";
+    document.getElementById('04m').style.visibility="hidden";
+    document.getElementById('05m').style.visibility="hidden";
+    document.getElementById('06m').style.visibility="hidden";
+    document.getElementById('07m').style.visibility="hidden";
+    document.getElementById('08m').style.visibility="hidden";
+    document.getElementById('09m').style.visibility="hidden";
+    document.getElementById('10m').style.visibility="hidden";
+    document.getElementById('11m').style.visibility="hidden";
+    document.getElementById('12m').style.visibility="hidden";
+    document.getElementById('13m').style.visibility="hidden";
+    document.getElementById('14m').style.visibility="hidden";
+    document.getElementById('15m').style.visibility="hidden";
+}
+
+function disociadaMatrix()
+{
+    // Loop counters.
+    var i, j;
+
+    // Fill the each row in the table)
+    for (i = 0; i < iMaxNum; i++)
+    {
+        disociadaTable[00] = ['1', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0'];
+        disociadaTable[01] = ['1', '1', '1', '1', '1', '=', '=', '=', '0', '0', '1', '1', '0', '1', '0'];
+        disociadaTable[02] = ['0', '1', '1', '=', '1', '0', '0', '1', '0', '1', '1', '0', '=', '0', '0'];
+        disociadaTable[03] = ['0', '1', '=', '1', '1', '=', '1', '1', '1', '1', '1', '0', '=', '0', '='];
+        disociadaTable[04] = ['0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '=', '=', '=', '0'];
+        disociadaTable[05] = ['0', '=', '0', '=', '1', '1', '1', '0', '1', '1', '0', '=', '=', '=', '='];
+        disociadaTable[06] = ['0', '=', '0', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '=', '1'];
+        disociadaTable[07] = ['0', '=', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '0'];
+        disociadaTable[08] = ['0', '0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '0', '=', '=', '1'];
+        disociadaTable[09] = ['1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '1'];
+        disociadaTable[10] = ['1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '=', '1', '0', '='];
+        disociadaTable[11] = ['0', '1', '0', '0', '=', '=', '0', '1', '0', '0', '=', '1', '1', '=', '0'];
+        disociadaTable[12] = ['0', '0', '=', '=', '=', '=', '1', '1', '=', '0', '1', '1', '1', '=', '0'];
+        disociadaTable[13] = ['0', '1', '0', '0', '=', '=', '=', '1', '=', '0', '0', '=', '=', '1', '0'];
+        disociadaTable[14] = ['0', '0', '0', '=', '0', '=', '1', '0', '1', '1', '=', '0', '0', '0', '1'];
+    }
+}
+
+function select(id)
+{
+    if (document.getElementById(id + 't').style.visibility=="hidden")
+    {
+        if (document.getElementById(id + 'img').border == "1")
+        {
+            inputVector[parseInt(id)-1] = 0;
+            document.getElementById(id + 'img').border = "0";
+        }
+        else if (document.getElementById(id + 'img').border == "0")
+        {
+            inputVector[parseInt(id)-1] = 1;
+            document.getElementById(id + 'img').border = "1";
+        }
+
+        statusVector = eval(inputVector);
+
+        for (i=0; i<statusVector.length; i++)
+        {
+            idi = ('00' + (i+1).toString()).slice(-2);
+
+            if (statusVector[i] == '0')
+            {
+                document.getElementById(idi + 't').style.visibility="visible";
+                document.getElementById(idi + 'm').style.visibility="hidden";
+            }
+            else if (statusVector[i] == '1')
+            {
+                document.getElementById(idi + 't').style.visibility="hidden";
+                document.getElementById(idi + 'm').style.visibility="hidden";
+            }
+            else if (statusVector[i] == '=')
+            {
+                document.getElementById(idi + 't').style.visibility="hidden";
+                document.getElementById(idi + 'm').style.visibility="visible";
+            }
+        }
+    }
+}
+
+function eval(vectorEntradas)
+{
+    var outputVector = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'];
+
+    for (i=0; i<vectorEntradas.length; i++)
+    {
+        if (vectorEntradas[i] == 1)
+            outputVector = vectorComposition(outputVector, disociadaTable[i]);
+    }
+
+    return outputVector;
+}
+
+function vectorComposition(vi, vj)
+{
+    var i, composedVector;
+
+    composedVector = vi;
+
+    for (i=0; i<composedVector.length; i++)
+    {
+        if (vi[i] == '0')
+        {
+            if (vj[i] == '0')
+                composedVector[i] = '0';
+            else if (vj[i] == '1')
+                composedVector[i] = '0';
+            else if (vj[i] == '=')
+                composedVector[i] = '0';
+        }
+        else if (vi[i] == '1')
+        {
+            if (vj[i] == '0')
+                composedVector[i] = '0';
+            else if (vj[i] == '1')
+                composedVector[i] = '1';
+            else if (vj[i] == '=')
+                composedVector[i] = '=';
+        }
+        else if (vi[i] == '=')
+        {
+            if (vj[i] == '0')
+                composedVector[i] = '0';
+            else if (vj[i] == '1')
+                composedVector[i] = '=';
+            else if (vj[i] == '=')
+                composedVector[i] = '=';
+        }
+    }
+
+    return composedVector;
+}
+
+</script>
+
+</head>
+
+<body onload="init();disociadaMatrix()">
+
+    <table border=0>
+
+        <tr>
+            <td onClick="select('01')"><div style="position:relative"><img id="01img" src="01.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="01t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="01m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('06')"><div style="position:relative"><img id="06img" src="06.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="06t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="06m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('11')"><div style="position:relative"><img id="11img" src="11.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="11t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="11m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+        </tr>
+
+        <tr>
+            <td onClick="select('02')"><div style="position:relative"><img id="02img" src="02.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="02t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="02m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('07')"><div style="position:relative"><img id="07img" src="07.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="07t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="07m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('12')"><div style="position:relative"><img id="12img" src="12.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="12t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="12m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+        </tr>
+
+        <tr>
+            <td onClick="select('03')"><div style="position:relative"><img id="03img" src="03.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="03t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="03m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('08')"><div style="position:relative"><img id="08img" src="08.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="08t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="08m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('13')"><div style="position:relative"><img id="13img" src="13.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="13t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="13m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+        </tr>
+
+        <tr>
+            <td onClick="select('04')"><div style="position:relative"><img id="04img" src="04.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="04t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="04m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('09')"><div style="position:relative"><img id="09img" src="09.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="09t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="09m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('14')"><div style="position:relative"><img id="14img" src="14.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="14t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="14m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+        </tr>
+
+        <tr>
+            <td onClick="select('05')"><div style="position:relative"><img id="05img" src="05.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="05t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="05m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('10')"><div style="position:relative"><img id="10img" src="10.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="10t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="10m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+            <td onClick="select('15')"><div style="position:relative"><img id="15img" src="15.png" width="120" height="120" hspace="0" vspace="0" /><div style="position:absolute; top:0; left:0;"><img border="0" id="15t" src="tachar.png" width="120" height="120" /><div style="position:absolute; top:0; left:0;"><img border="0" id="15m" src="m.png" width="120" height="120" hspace="0" vspace="0" /></div></div></div></td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
+
+
+    
